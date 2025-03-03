@@ -11,6 +11,7 @@ const handleInterfaceError = (res, err) => {
   res.end("Interface Server Error " + err);
 };
 
+const FormData = require("form-data");
 const passThroughRequester = async (req, res) => {
   try {
     const sourceBaseUrl = req.protocol + "://" + req.headers.host + "/";
@@ -24,13 +25,15 @@ const passThroughRequester = async (req, res) => {
     );
     const targetRoute = pathParamSetter(route.targetRoute.path, params);
     const parsedUrl = new URL(targetRoute, req.baseUrl);
+
     const options = {
       method: req.method,
-      headers: req.headers,
+      headers: { ...req.headers }, // Clone headers to modify later
       hostname: parsedUrl.hostname,
       port: parsedUrl.port,
       path: parsedUrl.pathname + sourceUrl.search,
     };
+
     console.log({
       sourceBaseUrl,
       sourceUrl,
@@ -40,17 +43,52 @@ const passThroughRequester = async (req, res) => {
       parsedUrl,
       options,
     });
-    const proxyReq = (parsedUrl.protocol === "https:" ? https : http).request(
-      options,
-      (proxyRes) => {
-        res.writeHead(proxyRes.statusCode, proxyRes.headers);
-        proxyRes.pipe(res, { end: true });
-      }
-    );
-    proxyReq.on("error", (err) => {
-      handleInterfaceError(res, err);
-    });
-    req.pipe(proxyReq, { end: true });
+
+    // Check if request is form-data
+    const contentType = req.headers["content-type"] || "";
+    console.log("contentType: ", contentType);
+    if (contentType.includes("multipart/form-data")) {
+      console.log("in multipart form data ");
+      // Create a new FormData instance
+      const form = new FormData();
+
+      // Append form data from the incoming request
+      req.on("data", (chunk) => {
+        form.append("file", chunk);
+      });
+
+      req.on("end", () => {
+        // Update headers with form-data specifics
+        options.headers = {
+          ...options.headers,
+          ...form.getHeaders(),
+        };
+
+        const proxyReq = (
+          parsedUrl.protocol === "https:" ? https : http
+        ).request(options, (proxyRes) => {
+          res.writeHead(proxyRes.statusCode, proxyRes.headers);
+          proxyRes.pipe(res, { end: true });
+        });
+        proxyReq.on("error", (err) => {
+          handleInterfaceError(res, err);
+        });
+        form.pipe(proxyReq);
+      });
+    } else {
+      // Non form-data request
+      const proxyReq = (parsedUrl.protocol === "https:" ? https : http).request(
+        options,
+        (proxyRes) => {
+          res.writeHead(proxyRes.statusCode, proxyRes.headers);
+          proxyRes.pipe(res, { end: true });
+        }
+      );
+      proxyReq.on("error", (err) => {
+        handleInterfaceError(res, err);
+      });
+      req.pipe(proxyReq, { end: true });
+    }
   } catch (err) {
     handleInterfaceError(res, err);
   }

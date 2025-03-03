@@ -385,5 +385,60 @@ module.exports = {
         functionName: "checkUser",
       },
     },
+    {
+      sourceRoute: "/interface/v1/user/send-otp",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/user/v1/send-otp",
+        type: "POST",
+        functionName: "fieldOptionRead",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/user/verify-otp",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/user/v1/verify-otp",
+        type: "POST",
+        functionName: "fieldOptionRead",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/user/form/create",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/user/v1/form/create",
+        type: "POST",
+        functionName: "createForm",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/user/presigned-url",
+      type: "GET",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/user/v1/presigned-url",
+        type: "GET",
+        functionName: "getSignedURL",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/user/presigned-url",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/user/v1/presigned-url",
+        type: "GET",
+        functionName: "getSignedURL",
+      },
+    },
   ],
 };
