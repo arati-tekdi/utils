@@ -1278,5 +1278,63 @@ module.exports = {
         functionName: "bundleContent",
       },
     },
+    {
+      sourceRoute: "/interface/v1/action/assessment/v3/items/create",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/action/assessment/v3/items/create",
+        type: "POST",
+        functionName: "createAssessment",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/action/assessment/v3/items/read/:identifier",
+      type: "GET",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/action/assessment/v3/items/read/:identifier",
+        type: "GET",
+        functionName: "readAssessment",
+      },
+    },
+    {
+      sourceRoute:
+        "/interface/v1/action/assessment/v3/items/update/:identifier",
+      type: "PATCH",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/action/assessment/v3/items/update/:identifier",
+        type: "PATCH",
+        functionName: "updateAssessment",
+      },
+    },
+    {
+      sourceRoute:
+        "/interface/v1/action/assessment/v3/items/review/:identifier",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/action/assessment/v3/items/review/:identifier",
+        type: "POST",
+        functionName: "reviewAssessment",
+      },
+    },
+    {
+      sourceRoute:
+        "/interface/v1/action/assessment/v3/items/retire/:identifier",
+      type: "DELETE",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/action/assessment/v3/items/retire/:identifier",
+        type: "DELETE",
+        functionName: "retireAssessment",
+      },
+    },
   ],
 };

@@ -440,5 +440,60 @@ module.exports = {
         functionName: "getSignedURL",
       },
     },
+    {
+      sourceRoute: "/interface/v1/user/locations",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/user/v1/locations",
+        type: "POST",
+        functionName: "addLocation",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/user/locations/:id",
+      type: "GET",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/user/v1/locations/:id",
+        type: "GET",
+        functionName: "getLocation",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/user/locations/update/:id",
+      type: "PATCH",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/user/v1/locations/update/:id",
+        type: "PATCH",
+        functionName: "upadteLocation",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/user/locations/delete/:id",
+      type: "DELETE",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/user/v1/locations/delete/:id",
+        type: "DELETE",
+        functionName: "deleteLocation",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/user/locations/search",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/user/v1/locations/search",
+        type: "POST",
+        functionName: "searchLocation",
+      },
+    },
   ],
 };

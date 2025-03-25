@@ -233,5 +233,27 @@ module.exports = {
         functionName: "renderCertificate",
       },
     },
+    {
+      sourceRoute: "/interface/v1/tracking/certificate/render-PDF",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/v1/tracking/certificate/render-PDF",
+        type: "POST",
+        functionName: "renderCertificatePDF",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/tracking/user_certificate/import/user",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/v1/tracking/user_certificate/import/user",
+        type: "POST",
+        functionName: "renderCertificatePDF",
+      },
+    },
   ],
 };
