@@ -255,5 +255,16 @@ module.exports = {
         functionName: "renderCertificatePDF",
       },
     },
+    {
+      sourceRoute: "/interface/v1/tracking/telemetry",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/v1/tracking/telemetry",
+        type: "POST",
+        functionName: "addTelemetryEvent",
+      },
+    },
   ],
 };
