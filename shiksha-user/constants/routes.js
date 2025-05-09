@@ -342,12 +342,12 @@ module.exports = {
       },
     },
     {
-      sourceRoute: "/interface/v1/fields/values/delete/:id",
+      sourceRoute: "/interface/v1/fields/values/delete",
       type: "DELETE",
       inSequence: true,
       orchestrated: true,
       targetRoute: {
-        path: "/user/v1/fields/values/delete/:id",
+        path: "/user/v1/fields/values/delete",
         type: "DELETE",
         functionName: "fieldValueDelete",
       },
@@ -493,6 +493,28 @@ module.exports = {
         path: "/user/v1/locations/search",
         type: "POST",
         functionName: "searchLocation",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/user/profile",
+      type: "GET",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "user/v1/profile",
+        type: "GET",
+        functionName: "searchUserByToken",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/user/tenant/read/:id",
+      type: "GET",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "user/v1/tenant/read/:id",
+        type: "GET",
+        functionName: "searchTenant",
       },
     },
   ],
