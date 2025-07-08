@@ -266,5 +266,119 @@ module.exports = {
         functionName: "addTelemetryEvent",
       },
     },
+    {
+      sourceRoute: "/interface/v1/tracking/ai-assessment/create",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/v1/tracking/ai-assessment/create",
+        type: "POST",
+        functionName: "createAIAssessment",
+      },
+    },
+    {
+      sourceRoute:
+        "/interface/v1/tracking/ai-assessment/update-status/:identifier",
+      type: "PATCH",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/v1/tracking/ai-assessment/update-status/:identifier",
+        type: "PATCH",
+        functionName: "updateAIAssessment",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/tracking/ai-assessment/read/:identifier",
+      type: "GET",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/v1/tracking/ai-assessment/read/:identifier",
+        type: "GET",
+        functionName: "readAIAssessment",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/tracking/answer-sheet-submissions/create",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/v1/tracking/answer-sheet-submissions/create",
+        type: "POST",
+        functionName: "createAnswerSheet",
+      },
+    },
+    {
+      sourceRoute:
+        "/interface/v1/tracking/answer-sheet-submissions/update-status/:identifier",
+      type: "PATCH",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/v1/tracking/answer-sheet-submissions/update-status/:identifier",
+        type: "PATCH",
+        functionName: "updateAnswerSheet",
+      },
+    },
+    {
+      sourceRoute:
+        "/interface/v1/tracking/answer-sheet-submissions/read/:identifier",
+      type: "GET",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/v1/tracking/answer-sheet-submissions/read/:identifier",
+        type: "GET",
+        functionName: "readAnswerSheet",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/tracking/answer-sheet-submissions/search",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/v1/tracking/answer-sheet-submissions/search",
+        type: "POST",
+        functionName: "searchAnswerSheet",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/tracking/ai-assessment/search",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/v1/tracking/ai-assessment/search",
+        type: "POST",
+        functionName: "searchAIAssessment",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/tracking/ai-assessment/update_question_set",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/v1/tracking/ai-assessment/update_question_set",
+        type: "POST",
+        functionName: "updateQuestionSet",
+      },
+    },
+    {
+      sourceRoute:
+        "/interface/v1/tracking/assessment/offline-assessment-status",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/v1/tracking/assessment/offline-assessment-status",
+        type: "POST",
+        functionName: "checkOfflineAssessmentStatus",
+      },
+    },
   ],
 };

@@ -88,5 +88,16 @@ module.exports = {
         functionName: "updateQueue",
       },
     },
+    {
+      sourceRoute: "/interface/v1/notification/send-raw",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "notification/send-raw",
+        type: "POST",
+        functionName: "updateQueue",
+      },
+    },
   ],
 };
