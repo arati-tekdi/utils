@@ -517,5 +517,16 @@ module.exports = {
         functionName: "searchTenant",
       },
     },
+    {
+      sourceRoute: "/interface/v1/academicyears/create",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "user/v1/academicyears/create",
+        type: "POST",
+        functionName: "createAcademicYear",
+      },
+    },
   ],
 };

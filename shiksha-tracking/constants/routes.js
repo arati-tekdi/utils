@@ -380,5 +380,16 @@ module.exports = {
         functionName: "checkOfflineAssessmentStatus",
       },
     },
+    {
+      sourceRoute: "/interface/v1/tracking/assessment/update/:identifier",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/v1/tracking/assessment/update/:identifier",
+        type: "POST",
+        functionName: "updateAssessment",
+      },
+    },
   ],
 };
