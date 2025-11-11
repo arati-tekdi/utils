@@ -595,7 +595,7 @@ module.exports = {
       },
     },
     {
-      sourceRoute: "/interface/v1/usertenant/status",
+      sourceRoute: "/interface/v1/user-tenant/status",
       type: "PATCH",
       inSequence: true,
       orchestrated: true,
@@ -628,7 +628,7 @@ module.exports = {
       },
     },
     {
-      sourceRoute: "/interface/v1/users-hierarchy-view",
+      sourceRoute: "/interface/v1/user/users-hierarchy-view",
       type: "POST",
       inSequence: true,
       orchestrated: true,
