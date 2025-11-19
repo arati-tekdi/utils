@@ -1224,6 +1224,18 @@ module.exports = {
       },
     },
     {
+      sourceRoute:
+        "/interface/v1/action/collection/v4/unlisted/publish/:identifier",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/action/collection/v4/unlisted/publish/:identifier",
+        type: "POST",
+        functionName: "publishCollectionUnlisted",
+      },
+    },
+    {
       sourceRoute: "/interface/v1/action/collection/v1/import/:identifier",
       type: "POST",
       inSequence: true,
