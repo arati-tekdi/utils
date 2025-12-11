@@ -391,5 +391,60 @@ module.exports = {
         functionName: "updateAssessment",
       },
     },
+    {
+      sourceRoute: "/interface/v1/tracking/certificate/template",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/v1/tracking/certificate/template",
+        type: "POST",
+        functionName: "createTemplate",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/tracking/certificate/course-template",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/v1/tracking/certificate/course-template",
+        type: "POST",
+        functionName: "createCourseTemplate",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/tracking/certificate/course-template/list",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/v1/tracking/certificate/course-template/list",
+        type: "POST",
+        functionName: "getCourseTemplateList",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/tracking/certificate/templates-list",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/v1/certificate/templates-list",
+        type: "POST",
+        functionName: "getTemplateList",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/tracking/certificate/get-template",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/v1/tracking/tracking/certificate/get-template",
+        type: "POST",
+        functionName: "getTemplate",
+      },
+    },
   ],
 };

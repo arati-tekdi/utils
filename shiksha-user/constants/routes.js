@@ -528,5 +528,71 @@ module.exports = {
         functionName: "createAcademicYear",
       },
     },
+    {
+      sourceRoute: "/interface/v1/user/sso/authenticate",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "user/v1/sso/authenticate",
+        type: "POST",
+        functionName: "ssoAuthenticate",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/user/hierarchical-search",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "user/v1/hierarchical-search",
+        type: "POST",
+        functionName: "UserHierarchicalSearch",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/user/location/hierarchical-search",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/user/v1/loaction/hierarchical-search",
+        type: "POST",
+        functionName: "LocationHierarchicalSearch",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/user/cohortcontent",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/user/v1/cohortcontent",
+        type: "POST",
+        functionName: "assignContentToGroup",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/user/cohortcontent",
+      type: "PUT",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/user/v1/cohortcontent",
+        type: "PUT",
+        functionName: "updateContentStatusForCohort",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/user/cohortcontent/search",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/user/v1/cohortcontent/search",
+        type: "POST",
+        functionName: "searchContent",
+      },
+    },
   ],
 };
