@@ -594,5 +594,49 @@ module.exports = {
         functionName: "searchContent",
       },
     },
+    {
+      sourceRoute: "/interface/v1/user-tenant/status",
+      type: "PATCH",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/user/v1/user-tenant/status",
+        type: "PATCH",
+        functionName: "updateUserTenantStatus",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/user-tenant/:id",
+      type: "GET",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/user/v1/user-tenant/:id",
+        type: "GET",
+        functionName: "getUserTenant",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/user-tenant",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/user/v1/user-tenant",
+        type: "POST",
+        functionName: "createUserTenant",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/user/users-hierarchy-view",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/user/v1/users-hierarchy-view",
+        type: "POST",
+        functionName: "usersHierarchyView",
+      },
+    },
   ],
 };
