@@ -638,5 +638,38 @@ module.exports = {
         functionName: "usersHierarchyView",
       },
     },
+    {
+      sourceRoute: "/interface/v1/fields/search",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/user/v1/fields/search",
+        type: "POST",
+        functionName: "fieldSearch",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/fields/create",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/user/v1/fields/search",
+        type: "POST",
+        functionName: "fieldSearch",
+      },
+    },
+    {
+      sourceRoute: "/interface/v1/send-otp-mail",
+      type: "POST",
+      inSequence: true,
+      orchestrated: true,
+      targetRoute: {
+        path: "/user/v1/send-otp-mail",
+        type: "POST",
+        functionName: "sendOtpOnMail",
+      },
+    },
   ],
 };
